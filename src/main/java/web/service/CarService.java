@@ -1,13 +1,14 @@
 package web.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import web.model.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class CarService {
+@Service
+public class CarService implements ICarService{
 
+    @Override
     public List<Car> createListCar() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("BMV", 2003, 210));
@@ -18,6 +19,7 @@ public class CarService {
         return cars;
     }
 
+    @Override
     public List<Car> getCars(List<Car> cars, Integer count) {
         return cars.stream().limit(count).toList();
     }
